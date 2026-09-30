@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Welcome Back | ByteSpace</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:#003BE2;font-family:'Outfit',sans-serif;-webkit-font-smoothing:antialiased}
+.auth-page{--s:1;--ox:calc(50vw - 720px);min-height:100vh;background-color:#003BE2;
+ background-image:linear-gradient(90deg,#1F53E6 2px,transparent 2px),linear-gradient(#1F53E6 2px,transparent 2px);
+ background-size:calc(120px*var(--s)) calc(120px*var(--s));
+ background-position:var(--ox) calc(-2px*var(--s));
+ color:#fff;overflow:hidden;position:relative}
+.auth-wrap{position:relative;width:calc(1440px*var(--s));height:calc(1024px*var(--s));margin:0 auto}
+.auth-stage{position:absolute;left:0;top:0;width:1440px;height:1024px;transform:scale(var(--s));transform-origin:0 0}
+
+/* logo + copy */
+.auth-brand{position:absolute;left:122px;top:34px;display:block;width:30px;height:33px;line-height:0}
+.auth-brand svg{width:30px;height:33px;display:block}
+.auth-copy{position:absolute;left:122px;top:114px;width:480px}
+.auth-copy h1{font-family:'Poppins','Outfit',sans-serif;font-size:19px;line-height:36px;font-weight:500;margin:0 0 6px;color:#fff;letter-spacing:-.2px}
+.auth-copy p{font-size:17.5px;line-height:29px;font-weight:300;color:#fff;margin:0;max-width:470px}
+
+/* visual */
+.auth-visual-wrap{position:absolute;left:122px;top:305px;width:495px;height:557px}
+.auth-visual{position:relative;width:495px;height:557px}
+.auth-card{position:absolute;width:372px;height:384px;background:#fff;border-radius:26px;padding:15px;color:#111;overflow:hidden}
+.auth-card.back{left:0;top:89px;z-index:1}
+.auth-card.front{left:112px;top:0;z-index:2;box-shadow:0 0 0 1px rgba(0,0,0,.04)}
+.auth-card .thumb{position:relative;width:100%;height:195px;border-radius:14px;overflow:hidden;background:#ddd}
+.auth-card .thumb>img{width:100%;height:100%;object-fit:cover;display:block}
+.auth-card .chips{position:absolute;left:12px;bottom:14px;display:flex;gap:10px}
+.auth-card .chips span{height:30px;padding:0 12px;border-radius:999px;background:rgba(190,190,192,.72);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);color:#555;font-size:14px;line-height:30px;white-space:nowrap}
+.auth-card .row{display:flex;align-items:center;justify-content:space-between;margin-top:22px;height:32px}
+.auth-card h3{font-family:'Poppins','Outfit',sans-serif;font-size:20px;font-weight:600;margin:0;line-height:32px;color:#111;white-space:nowrap;letter-spacing:-.3px}
+.auth-card .rate{display:flex;align-items:center;gap:3px;font-size:18px;color:#666;font-weight:400}
+.auth-card .rate svg{width:24px;height:24px}
+.auth-card .by{font-size:13px;line-height:20px;color:#0038E0;margin-top:-1px}
+.auth-card .meta{display:flex;align-items:center;gap:12px;margin-top:13px;height:31px}
+.auth-card .level{display:flex;align-items:center;gap:9px;height:31px;padding:0 19px 0 17px;border-radius:999px;background:#f2f2f2;font-size:14px;color:#555}
+.auth-card .level svg{width:16px;height:16px}
+.auth-avatars{display:flex;align-items:center}
+.auth-avatars img,.auth-avatars b{width:36px;height:36px;border-radius:50%;border:2px solid #fff;object-fit:cover;margin-left:-13px;flex:none;background:#ddd}
+.auth-avatars>:first-child{margin-left:0}
+.auth-avatars b{background:#111;color:#fff;font-weight:400;font-size:14px;display:grid;place-items:center}
+.auth-card .price{font-family:'Poppins','Outfit',sans-serif;font-size:20px;line-height:36px;font-weight:600;color:#0038E0;margin-top:10px}
+.auth-card .price span{font-family:'Outfit',sans-serif;font-size:14px;font-weight:400;color:#666;margin-left:1px}
+
+.auth-happy{position:absolute;left:226px;top:435px;width:258px;height:122px;background:#D4FB20;border-radius:20px;padding:14px 16px;z-index:3;color:#111}
+.auth-happy h4{margin:0;font-size:16px;line-height:24px;font-weight:400}
+.auth-happy .sub{display:flex;align-items:center;gap:3px;font-size:12px;line-height:18px;margin-top:1px}
+.auth-happy .sub b{font-weight:600}
+.auth-happy .sub i{font-style:normal;color:#777}
+.auth-happy .sub svg{width:17px;height:17px}
+.auth-happy .auth-avatars{margin-top:5px}
+.auth-happy .auth-avatars img,.auth-happy .auth-avatars b{width:44px;height:44px;margin-left:-18px;border-color:#D4FB20}
+.auth-happy .auth-avatars>:first-child{margin-left:0}
+.auth-happy .auth-avatars b{font-size:17px}
+.auth-shape{position:absolute;pointer-events:none;z-index:5;max-width:none}
+.auth-shape.torus{width:150px;left:12px;top:8px;transform:rotate(-48deg);filter:saturate(1.3) brightness(1.1) contrast(1.05)}
+.auth-shape.spring{width:165px;left:338px;top:314px;transform:rotate(65deg)}
+.auth-shape.cone{width:170px;left:-21px;top:403px;filter:saturate(1.3) brightness(1.1) contrast(1.05)}
+
+/* form */
+.auth-form{position:absolute;left:741px;top:120px;width:579px;height:784px;background:#fff;border-radius:30px;padding:64px 63px 0;color:#222}
+.auth-kicker{font-size:17px;line-height:24px;color:#0038E0;margin:0;font-weight:400}
+.auth-form h2{font-family:'Poppins','Outfit',sans-serif;font-size:44px;line-height:50px;font-weight:600;margin:6px 0 0;color:#222;letter-spacing:-.8px}
+.auth-field{display:block;font-size:15px;line-height:20px;color:#222;margin-top:24px;font-weight:400}
+.auth-field.first{margin-top:38px}
+.auth-field input{display:block;width:100%;height:52px;margin-top:6px;border:1px solid #E5E6E8;border-radius:12px;background:#fff;padding:0 24px;font:400 17px 'Outfit',sans-serif;color:#222;outline:none;transition:border-color .15s,box-shadow .15s}
+.auth-field input::placeholder{color:#8f9094;opacity:1}
+.auth-field input:focus{border-color:#003BE2;box-shadow:0 0 0 3px rgba(0,59,226,.12)}
+.auth-actions{display:flex;justify-content:flex-end;margin-top:24px}
+.auth-submit{height:46px;padding:0 24px;min-width:104px;border:0;border-radius:999px;background:#D4FB20;color:#111;font:400 18px 'Outfit',sans-serif;cursor:pointer;transition:filter .15s}
+.auth-submit:hover{filter:brightness(.95)}
+.auth-or{display:flex;align-items:center;justify-content:space-between;margin:77px 14px 0 0;height:20px;color:#8f9094;font-size:16px}
+.auth-or:before,.auth-or:after{content:"";height:1px;background:#d9d9db;width:199px}
+.auth-social{display:flex;justify-content:center;gap:17px;margin-top:45px;padding-right:0}
+.auth-social button{width:72px;height:72px;border:1px solid #d9d9db;background:#fff;border-radius:22px;cursor:pointer;display:grid;place-items:center;padding:0;transition:background .15s}
+.auth-social button:hover{background:#f6f6f7}
+.auth-social svg{width:34px;height:34px;fill:#000}
+.auth-bottom{position:absolute;left:0;right:0;bottom:41px;margin:0;text-align:center;color:#85868a;font-size:16px;line-height:24px}
+.auth-form.is-signup .auth-bottom{bottom:52px}
+.auth-bottom a{color:#0038E0;text-decoration:none}
+.auth-bottom a:hover{text-decoration:underline}
+
+/* mobile / tablet: stacked layout */
+@media(max-width:1000px){
+ .auth-page{background-size:60px 60px;background-position:0 -1px;padding:0 0 32px}
+ .auth-wrap{width:100%;height:auto;margin:0}
+ .auth-stage{position:relative;width:100%;height:auto;transform:none;display:flex;flex-direction:column;align-items:center;padding:24px 20px 0}
+ .auth-brand{position:static;align-self:flex-start;margin-bottom:26px}
+ .auth-copy{position:static;width:100%;max-width:560px}
+ .auth-copy p{font-size:17px;line-height:26px}
+ .auth-visual-wrap{position:relative;left:auto;top:auto;width:calc(495px*var(--vs,.7));height:calc(557px*var(--vs,.7));margin:26px auto 28px}
+ .auth-visual{transform:scale(var(--vs,.7));transform-origin:0 0}
+ .auth-form{position:relative;left:auto;top:auto;width:100%;max-width:579px;height:auto;min-height:0;padding:44px 28px 36px;border-radius:26px}
+ .auth-form h2{font-size:38px;line-height:44px}
+ .auth-bottom,.auth-form.is-signup .auth-bottom{position:static;margin-top:44px}
+ .auth-or{margin:48px 0 0}
+ .auth-or:before,.auth-or:after{width:auto;flex:1}
+ .auth-or span{margin:0 16px}
+ .auth-social{margin-top:32px}
+}
+@media(max-width:480px){
+ .auth-copy{display:none}
+ .auth-visual-wrap{margin-top:0}
+ .auth-form{padding:34px 22px 30px}
+ .auth-form h2{font-size:34px;line-height:40px}
+ .auth-field input{height:48px}
+ .auth-submit{font-size:18px}
+}
+</style>
+</head><body>
+<main class="auth-page" id="authPage">
+<div class="auth-wrap"><div class="auth-stage">
+  <a class="auth-brand" href="index.html" aria-label="ByteSpace home"><svg viewBox="0 0 30 33" aria-hidden="true"><path d="M2 3.2C2 1.4 3.4 0 5.2 0h1.6C8.6 0 10 1.4 10 3.2V9.2A11.6 11.6 0 0 1 14.6 8.3c6.4 0 11.4 5.1 11.4 11.4S21 33 14.6 33C7.8 33 2 27.6 2 20.5z" fill="#D4FB20" transform="translate(2 0)"/><path d="M13 16.6l7.4 4.4-7.4 4.4z" fill="#003BE2" transform="translate(2 0)"/></svg></a>
+  <section class="auth-copy">
+    <h1>Sign in with ease</h1>
+    <p>Experience a seamless and efficient sign-in process that grants you instant access to a world of knowledge.</p>
+  </section>
+  <div class="auth-visual-wrap" aria-hidden="true"><div class="auth-visual">
+      <div class="auth-card back">
+        <div class="thumb"><img src="assets/img/course-icons.jpg" alt=""><div class="chips"><span>17 Lessons</span><span>2 hours 16 mins</span><span>59 Comments</span></div></div>
+        <div class="row"><h3>Build Digital Asset</h3><div class="rate">4.5 <svg viewBox="0 0 24 24"><path d="M12 1.8l3 6.6 7.2.8-5.4 4.9 1.5 7.1L12 17.6l-6.3 3.6 1.5-7.1L1.8 9.2l7.2-.8z" fill="#D4FB20" stroke="#D4FB20" stroke-width="1.2" stroke-linejoin="round"/></svg></div></div>
+        <div class="by">by <span>purepearl studio</span></div>
+        <div class="meta"><span class="level"><svg viewBox="0 0 16 16"><rect x="1" y="9" width="3" height="6" rx="1" fill="#555"/><rect x="6.5" y="5" width="3" height="10" rx="1" fill="#555"/><rect x="12" y="1" width="3" height="14" rx="1" fill="#555"/></svg>Beginner</span><span class="auth-avatars"><img src="assets/img/avatar-cody.jpg" alt=""><img src="assets/img/avatar-woman.jpg" alt=""><img src="assets/img/avatar-james.png" alt=""><img src="assets/img/avatar-alex.png" alt=""><b>26+</b></span></div>
+        <div class="price">$25<span>/lifetime</span></div>
+      </div>
+      <div class="auth-card front">
+        <div class="thumb"><img src="assets/img/course-bigdata.jpg" alt=""><div class="chips"><span>17 Lessons</span><span>2 hours 16 mins</span><span>59 Comments</span></div></div>
+        <div class="row"><h3>the Power of Big Data</h3><div class="rate">4.5 <svg viewBox="0 0 24 24"><path d="M12 1.8l3 6.6 7.2.8-5.4 4.9 1.5 7.1L12 17.6l-6.3 3.6 1.5-7.1L1.8 9.2l7.2-.8z" fill="#D4FB20" stroke="#D4FB20" stroke-width="1.2" stroke-linejoin="round"/></svg></div></div>
+        <div class="by">by <span>purepearl studio</span></div>
+        <div class="meta"><span class="level"><svg viewBox="0 0 16 16"><rect x="1" y="9" width="3" height="6" rx="1" fill="#555"/><rect x="6.5" y="5" width="3" height="10" rx="1" fill="#555"/><rect x="12" y="1" width="3" height="14" rx="1" fill="#555"/></svg>Beginner</span><span class="auth-avatars"><img src="assets/img/avatar-cody.jpg" alt=""><img src="assets/img/avatar-woman.jpg" alt=""><img src="assets/img/avatar-james.png" alt=""><img src="assets/img/avatar-alex.png" alt=""><b>26+</b></span></div>
+        <div class="price">$25<span>/lifetime</span></div>
+      </div>
+      <img class="auth-shape torus" src="assets/img/lime-torus.png" alt="">
+      <img class="auth-shape spring" src="assets/img/white-spring-gray.png" alt="">
+      <img class="auth-shape cone" src="assets/img/lime-cone.png" alt="">
+      <div class="auth-happy"><h4>Happy Students</h4><div class="sub"><b>4.5</b><i>(240)</i><svg viewBox="0 0 24 24"><path d="M12 1.8l3 6.6 7.2.8-5.4 4.9 1.5 7.1L12 17.6l-6.3 3.6 1.5-7.1L1.8 9.2l7.2-.8z" fill="#0038E0" stroke="#0038E0" stroke-width="1.2" stroke-linejoin="round"/></svg></div><div class="auth-avatars"><img src="assets/img/avatar-cody.jpg" alt=""><img src="assets/img/avatar-woman.jpg" alt=""><img src="assets/img/avatar-james.png" alt=""><img src="assets/img/avatar-alex.png" alt=""><img src="assets/img/avatar-albert.png" alt=""><img src="assets/img/avatar-creator.png" alt=""><img src="assets/img/figma-sarah.png" alt=""><b>2K+</b></div></div>
+  </div></div>
+  <form id="authForm" class="auth-form">
+    <p class="auth-kicker">Sign In</p>
+    <h2>Welcome Back</h2>
+    <label class="auth-field first">Email<input required  type="email" placeholder="designer@example.com"></label>
+      <label class="auth-field">Password<input required minlength="8" type="password" placeholder="********"></label>
+      <div class="auth-actions"><button class="auth-submit" type="submit">Sign In</button></div>
+    <div class="auth-or"><span>or</span></div>
+      <div class="auth-social">
+        <button type="button" aria-label="Continue with Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></button>
+        <button type="button" aria-label="Continue with Google"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"/></svg></button>
+      </div>
+      <p class="auth-bottom">New user? <a href="signup.html">Create an account</a></p>
+  </form>
+</div></div>
+</main>
+<script>
+(function(){
+  var pg=document.getElementById('authPage');
+  function fit(){
+    var w=document.documentElement.clientWidth;
+    if(w>1000){
+      var s=Math.min(1,w/1440);
+      pg.style.setProperty('--s',s);
+      pg.style.setProperty('--ox',((w-1440*s)/2)+'px');
+    }else{
+      pg.style.setProperty('--s',1);
+      pg.style.setProperty('--vs',Math.min(1,(Math.min(w,579+40)-40)/495));
+    }
+  }
+  fit();window.addEventListener('resize',fit);
+})();
+document.getElementById('authForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  var b=this.querySelector('.auth-submit');b.textContent='Done \u2713';
+  setTimeout(function(){location.href='index.html'},700);
+});
+</script>
+</body></html>

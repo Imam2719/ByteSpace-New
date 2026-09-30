@@ -1,0 +1,14 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Courses | ByteSpace New</title><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"><script src="https://cdn.tailwindcss.com"></script><script src="assets/js/tw.js"></script><link rel="stylesheet" href="assets/css/style.css"><script src="assets/js/main.js"></script></head><body>
+<section class="grid-bg text-white pb-14"><div id="nav" data-active="Courses"></div><div class="max-w-3xl mx-auto px-5 pt-6 text-center"><h1 class="text-3xl sm:text-4xl font-semibold">Find Your Next Course</h1><div class="mt-8 flex gap-3"><input id="q" placeholder="Search" class="flex-1 min-w-0 rounded-full px-5 py-3 text-ink"><button class="btn">Courses ⌄</button></div></div></section>
+<main class="max-w-6xl mx-auto px-5 py-10"><div class="flex flex-wrap gap-3 justify-between"><div class="flex flex-wrap gap-3"><button class="chip border border-gray-300 !bg-white">Filter</button><button class="chip border border-gray-300 !bg-white">Level</button><button class="chip border border-gray-300 !bg-white">Category</button></div><button class="chip border border-gray-300 !bg-white">Most relevant</button></div>
+<div data-chips id="cc" class="flex gap-3 mt-6 overflow-x-auto pb-2"></div><div id="g" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10"></div><p id="none" class="hidden text-center text-gray-500 mt-10">No courses match your search. Try a different keyword.</p>
+<div id="pg" class="flex justify-center items-center gap-5 mt-14"></div></main><div id="footer"></div>
+<script>
+cc.innerHTML=chips();
+const all=Array.from({length:18},(_,i)=>i);
+function draw(){const s=q.value.toLowerCase();const r=all.filter(i=>T[i%6].toLowerCase().includes(s));g.innerHTML=r.map(card).join('');none.classList.toggle('hidden',r.length>0)}
+q.addEventListener('input',draw);
+q.value=new URLSearchParams(location.search).get('q')||'';draw();
+pg.innerHTML='<button class="w-11 h-11 rounded-full border border-gray-300" aria-label="Previous">‹</button>'+[1,2,3,4,5].map(n=>`<a href="#" class="${n==1?'text-gray-400':'font-semibold'}">${n}</a>`).join('')+'<button class="w-11 h-11 rounded-full border border-gray-300" aria-label="Next">›</button>';
+</script>
+</body></html>

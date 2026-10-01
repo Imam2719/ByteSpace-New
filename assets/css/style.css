@@ -33,7 +33,7 @@ html,body{overflow-x:hidden}
 @media (min-width:768px) and (max-width:1023px){
   .path-visual{height:520px}
   .path-visual>img[alt*="Smiling"]{height:430px!important;right:-14%!important}
-  .path-visual>.fcard{width:14rem!important}
+  .path-visual>.fcard:not(.path-course-card){width:14rem!important}
   .path-copy h2{font-size:2.5rem}
 }
 
@@ -80,10 +80,11 @@ html,body{overflow-x:hidden}
   .path-visual{height:440px;margin-top:0}
   .path-course-card{width:64%!important;top:0!important}
   .path-course-card>div:first-child{height:190px!important}
-  .path-visual>img[alt*="Smiling"]{height:300px!important;right:-110px!important}
+  .path-visual>img[alt*="Smiling"]{height:300px!important;right:-140px!important}
   .path-visual>img[alt=""]{width:5rem!important;right:0!important;top:70px!important}
-  .path-visual>.fcard{width:10.5rem!important;right:0!important;top:180px!important;padding:.9rem!important}
-  .path-visual>.fcard p:nth-child(2){font-size:2rem!important}
+  .path-visual>.path-course-card{max-width:none!important}
+  .path-visual>.fcard:not(.path-course-card){width:10.5rem!important;max-width:none!important;right:0!important;top:180px!important;padding:.9rem!important}
+  .path-visual>.fcard:not(.path-course-card) p:nth-child(2){font-size:2rem!important}
 
   /* CTA */
   .cta{padding-top:4.5rem;padding-bottom:6rem}
